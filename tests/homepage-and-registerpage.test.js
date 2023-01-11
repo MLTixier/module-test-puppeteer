@@ -1,6 +1,6 @@
 const timeout = 15000;
 
-// série de tests sur la page d'accueil
+// série de tests sur la page register / sign up
 describe("Tests basiques", () => {
     let page;
 
@@ -12,27 +12,28 @@ describe("Tests basiques", () => {
         await page.waitForSelector('body');
         // récupérer le contenu de l'élément <body>
         const html = await page.$eval('body', e => e.innerHTML);
-        // vérifier que dans cet élément Body on trouve "Polr du campus"
+        // vérifier que dans cet élément Body on trouve "Shorturl"
         await page.screenshot({path: './tests/img/basic-home.png'});
         expect(html).toContain("Shorturl")
-    }, timeout);git add .
+    }, timeout);
 
-    // parcours client avec about
-    test('home and about', async () => {
+    // parcours client avec sign up
+    test('home and sign up', async () => {
         await page.goto('https://polr.stationmyr.net');
         await page.waitForSelector('#navbar li a');
         // click sur le lien "About" de la navigation
-        await page.evaluate( () => {
+        await page.evaluate(() => {
             Array
-                .from( document.querySelectorAll( '#navbar li a' ) )
-                .filter( el => el.textContent === 'About' )[0].click();
+                .from(document.querySelectorAll('#navbar li a'))
+                .filter(el => el.textContent === 'Sign Up')[0].click();
         });
-        // on attent que l'élément ".about-contents" soit chargé
-        await page.waitForSelector('.about-contents');
+        // on attent que l'élément ".title" soit chargé
+        await page.waitForSelector('.title');
+        await page.screenshot({path: './tests/img/signup.png'});
         // on récupère le code HTML
-        const html = await page.$eval('.about-contents', e => e.innerHTML);
+        const html = await page.$eval('.title', e => e.innerHTML);
         // on vérifie qu'il contient la bonne chaîne de caractères
-        expect(html).toContain("powered by Polr 2");
+        expect(html).toContain("Register");
     }, timeout);
 
 

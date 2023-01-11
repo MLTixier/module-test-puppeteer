@@ -21,7 +21,7 @@ Ce qu'il faut regarder
 
 Les premiers fichiers à regarder sont dans l'ordre :
 
-* tests/basic.test.js
+* tests/homepage-and-aboutpage.test.js
 * tests/shorten.test.js
 
 Principe
