@@ -21,7 +21,7 @@ describe("Tests basiques", () => {
     test('home and sign up', async () => {
         await page.goto('https://polr.stationmyr.net');
         await page.waitForSelector('#navbar li a');
-        // click sur le lien "About" de la navigation
+        // click sur le lien "Sign Up" de la navigation
         await page.evaluate(() => {
             Array
                 .from(document.querySelectorAll('#navbar li a'))
